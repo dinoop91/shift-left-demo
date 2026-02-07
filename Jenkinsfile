@@ -5,7 +5,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 sh '''
-                  docker build -t shiftleft-demo:v1 .
+                  docker build -t docker.io/dinoopnair/shiftleft-demo:v1 .
                 '''
             }
         }
@@ -16,7 +16,7 @@ pipeline {
                   trivy image \
                     --format json \
                     --output trivy-build.json \
-                    shiftleft-demo:v1
+                    docker.io/dinoopnair/shiftleft-demo:v1
                 '''
             }
         }
