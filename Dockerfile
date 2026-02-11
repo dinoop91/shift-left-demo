@@ -1,10 +1,10 @@
-FROM nginx:1.21-alpine
+FROM python:3.9-alpine
 
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-RUN mkdir -p /var/cache/nginx \
- && chmod -R 777 /var/cache/nginx \
- && chmod -R 777 /etc/nginx
+COPY . .
 
-USER 1001
-COPY index.html /usr/share/nginx/html/index.html
+CMD ["python", "app.py"]
 
